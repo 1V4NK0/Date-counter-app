@@ -13,52 +13,33 @@ function Counter() {
   const firstDate = new Date("december 12 2028");
   const date = new Date("december 12 2028");
   const [count, setCount] = useState(1);
-  const [step, setStep] = useState(1);
-  date.setDate(date.getDate() + count * step)
-  // let newDate = new Date(date.getDate() + count);
-
-
-
-
-  const countPlus = () => {
-     setCount(count + 1);
-  };
-  const countMinus = () => {
-     setCount(count - 1);
-  };
-
-  const stepPlus = () => {
-     setStep(step + 1);
-  };
-  const stepMinus = () => {
-     setStep(step - 1);
-  };
-  
-
-
+  const [stepRange, setStepRange] = useState(1);
+  date.setDate(date.getDate() + count * stepRange);
 
   return (
     <>
       <div className="step-container">
-        <button className="minus" onClick={stepMinus}>
-          -
-        </button>
-        <div>Step: {step}</div>
-        <button className="plus" onClick={stepPlus}>
-          +
-        </button>
+        <p>Step</p>
+        <input
+          type="range"
+          min={1}
+          max={10}
+          value={stepRange}
+          onChange={(e) => setStepRange(e.target.value)}
+        />
+        <span>{stepRange}</span>
       </div>
       <div className="count-container">
-        <button className="minus" onClick={countMinus}>
-          -
-        </button>
-        <div>Count: {count}</div>
-        <button className="plus" onClick={countPlus}>
-          +
-        </button>
+        <input type="number" min={0} max={1000} onChange={(e) => setCount(e.target.value)}/>
       </div>
       <div className="display-container">
-        <div>{count === 0 ? `Today is ${firstDate.toDateString()}` : `${count*step} day(s) from ${firstDate.toDateString()} is ${date.toDateString()}`}  </div>
+        <div>
+          {count === 0
+            ? `Today is ${firstDate.toDateString()}`
+            : `${
+                count * stepRange
+              } day(s) from ${firstDate.toDateString()} is ${date.toDateString()}`}{" "}
+        </div>
       </div>
     </>
   );

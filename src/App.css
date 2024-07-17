@@ -5,12 +5,13 @@
   justify-content: center;
   padding: 15px;
   background-color: rgb(208, 231, 250);
+  font-size: 30px;
+
 }
 
 .step-container > div {
   display: flex;
   align-items: center;
-  font-size: 30px;
 }
 
 .step-container > * {
