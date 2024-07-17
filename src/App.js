@@ -30,11 +30,11 @@ function Counter() {
         <span>{stepRange}</span>
       </div>
       <div className="count-container">
-        <input type="number" min={0} max={1000} onChange={(e) => setCount(e.target.value)}/>
+        <input type="number" min={0} max={1000} value={count} onChange={(e) => setCount(e.target.value)}/>
       </div>
       <div className="display-container">
         <div>
-          {count === 0
+          { stepRange * count === 0
             ? `Today is ${firstDate.toDateString()}`
             : `${
                 count * stepRange
